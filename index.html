@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Legend of Aeroverra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0a0a0a;
+  --card-bg: #111113;
+  --card-border: #1a1a1f;
+  --text: #e0e0e0;
+  --text-muted: #888;
+  --accent-blue: #3b82f6;
+  --accent-purple: #a855f7;
+  --accent-orange: #f97316;
+  --accent-red: #ef4444;
+  --accent-green: #22c55e;
+  --accent-cyan: #06b6d4;
+  --accent-pink: #ec4899;
+  --accent-yellow: #eab308;
+  --timeline-line: #1e1e24;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Hero */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at center, rgba(59,130,246,0.08) 0%, transparent 50%),
+              radial-gradient(ellipse at 20% 80%, rgba(168,85,247,0.06) 0%, transparent 40%),
+              radial-gradient(ellipse at 80% 20%, rgba(249,115,22,0.05) 0%, transparent 40%);
+  animation: heroPulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes heroPulse {
+  0% { transform: scale(1) rotate(0deg); }
+  100% { transform: scale(1.05) rotate(2deg); }
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #3b82f6, #a855f7, #f97316);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 1rem;
+}
+
+.hero .subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  color: var(--text-muted);
+  font-style: italic;
+  font-weight: 300;
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+}
+
+.hero .scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  z-index: 1;
+  animation: bounce 2s infinite;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+/* Timeline */
+.timeline-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 6rem;
+  position: relative;
+}
+
+.timeline-section::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--timeline-line) 5%, var(--timeline-line) 95%, transparent);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 4rem;
+  width: 45%;
+}
+
+.timeline-item:nth-child(odd) {
+  margin-left: 0;
+  padding-right: 2rem;
+  text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+  margin-left: 55%;
+  padding-left: 2rem;
+  text-align: left;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  top: 1.5rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  background: var(--bg);
+  z-index: 2;
+}
+
+.timeline-item:nth-child(odd)::before {
+  right: -8px;
+}
+
+.timeline-item:nth-child(even)::before {
+  left: -8px;
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  top: 1.85rem;
+  width: 2rem;
+  height: 2px;
+  background: var(--card-border);
+}
+
+.timeline-item:nth-child(odd)::after {
+  right: 0;
+}
+
+.timeline-item:nth-child(even)::after {
+  left: 0;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  opacity: 0.7;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  border-color: var(--accent);
+}
+
+.card .date {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+
+.card .title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: #fff;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.card li {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+  line-height: 1.5;
+}
+
+.card li::before {
+  content: '›';
+  color: var(--accent);
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+
+.timeline-item:nth-child(odd) .card li {
+  text-align: left;
+}
+
+.card .quote {
+  font-style: italic;
+  color: var(--accent);
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+/* Accent color classes */
+.accent-blue { --accent: var(--accent-blue); }
+.accent-purple { --accent: var(--accent-purple); }
+.accent-orange { --accent: var(--accent-orange); }
+.accent-red { --accent: var(--accent-red); }
+.accent-green { --accent: var(--accent-green); }
+.accent-cyan { --accent: var(--accent-cyan); }
+.accent-pink { --accent: var(--accent-pink); }
+.accent-yellow { --accent: var(--accent-yellow); }
+
+/* Quotes Section */
+.quotes-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 6rem;
+  text-align: center;
+}
+
+.quotes-section h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, #a855f7, #f97316);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.quotes-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.quote-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 2rem;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--text);
+  position: relative;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.quote-card:hover {
+  transform: scale(1.02);
+  border-color: var(--accent-purple);
+}
+
+.quote-card::before {
+  content: '"';
+  position: absolute;
+  top: -0.2rem;
+  left: 1rem;
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--accent-purple);
+  opacity: 0.2;
+  font-style: normal;
+}
+
+.quote-card .context {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: normal;
+  margin-top: 0.75rem;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  border-top: 1px solid var(--card-border);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+footer span {
+  color: #f97316;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .timeline-section::before {
+    left: 1.5rem;
+  }
+
+  .timeline-item,
+  .timeline-item:nth-child(odd),
+  .timeline-item:nth-child(even) {
+    width: calc(100% - 3rem);
+    margin-left: 3rem;
+    padding-left: 1.5rem;
+    padding-right: 0;
+    text-align: left;
+  }
+
+  .timeline-item::before,
+  .timeline-item:nth-child(odd)::before,
+  .timeline-item:nth-child(even)::before {
+    left: -2.05rem;
+    right: auto;
+  }
+
+  .timeline-item::after,
+  .timeline-item:nth-child(odd)::after,
+  .timeline-item:nth-child(even)::after {
+    left: -1rem;
+    right: auto;
+    width: 1rem;
+  }
+
+  .timeline-item:nth-child(odd) .card li {
+    text-align: left;
+  }
+}
+
+/* Fade in animation */
+.timeline-item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <h1>THE LEGEND OF AEROVERRA</h1>
+  <p class="subtitle">"The problem is most people play the wrong game."</p>
+  <div class="scroll-hint">↓</div>
+</section>
+
+<section class="timeline-section">
+
+  <!-- ~2006 -->
+  <div class="timeline-item accent-red">
+    <div class="card">
+      <div class="date">~2006 · Age 8, 3rd Grade</div>
+      <div class="title">The Texas Incident</div>
+      <ul>
+        <li>Built a DDoS shell and tested it on Texas.gov, timing the website out</li>
+        <li>His childhood friend Sam (now a doctor) was sitting right there watching</li>
+        <li>The ISP allegedly called his parents to threaten cutting off internet</li>
+      </ul>
+      <div class="quote">"Local governments should thank me. If I don't take control an enemy will."</div>
+    </div>
+  </div>
+
+  <!-- 2010 -->
+  <div class="timeline-item accent-green">
+    <div class="card">
+      <div class="date">2010 · Age 12</div>
+      <div class="title">Boy Scout WiFi</div>
+      <ul>
+        <li>Hacked into the WiFi tower at the 2010 Boy Scout Jamboree</li>
+        <li>Didn't steal anything — just reset it because it was slow</li>
+        <li>Unauthorized network administration as community service</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- February 2012 -->
+  <div class="timeline-item accent-purple">
+    <div class="card">
+      <div class="date">February 2012 · Age 13</div>
+      <div class="title">The Awakening</div>
+      <ul>
+        <li>Got RAT'd (remote access trojan), lost 100M+ RuneScape gold</li>
+        <li>Posted "computer hjacked" on HackForums, tried every antivirus</li>
+        <li>This was the virus that changed everything — he learned from it</li>
+        <li>Two weeks later: "How to ddos" and "how to make or obtain shells"</li>
+        <li>Got RAT'd twice total, never again. Doesn't run antivirus anymore.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- March 2012 -->
+  <div class="timeline-item accent-orange">
+    <div class="card">
+      <div class="date">March 2012</div>
+      <div class="title">The Arsenal</div>
+      <ul>
+        <li>Already had "a few hundred shells" for his booter</li>
+        <li>Shopping for more on HackForums at age 13</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- April 2012 -->
+  <div class="timeline-item accent-red">
+    <div class="card">
+      <div class="date">April 2012</div>
+      <div class="title">TzBooter</div>
+      <ul>
+        <li>Branded DDoS-as-a-Service with custom banner art</li>
+        <li>Gothic font, dripping letters, tagline: "get hit"</li>
+        <li>Running a DDoS service before he could drive</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- May 2012 -->
+  <div class="timeline-item accent-blue">
+    <div class="card">
+      <div class="date">May 2012 · Age 13-14</div>
+      <div class="title">T&Z Hosting</div>
+      <ul>
+        <li>Launched a hosting company at age 13-14</li>
+        <li>$0.50/month to $3.00/month plans with cPanel</li>
+        <li>Contact: 88tontos@gmail.com — the T is probably Thomas (his brother)</li>
+        <li>Skipped school to drive 6 hours to Rhode Island to win a full Dell server rack at auction</li>
+        <li>Stuck it in his parents' minivan, set it up in the family living room</li>
+        <li>The T&Z Hosting "data center" was a Dell rack in a New Hampshire living room</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- High School -->
+  <div class="timeline-item accent-yellow">
+    <div class="card">
+      <div class="date">High School Era</div>
+      <div class="title">Campus Operations</div>
+      <ul>
+        <li>First C++ program: a rickroll trojan that opened Rick Astley in a frame with disabled exit button</li>
+        <li>Got admin access to the school laptop deployment system, deployed it during silent study hall</li>
+        <li>Earned 3 Saturday detentions</li>
+        <li>Gave someone a DDoS shell on a hacked cPanel</li>
+        <li>That person set it to attack the school for 200 HOURS</li>
+        <li>School thought all their main switches died and replaced them all (thousands of dollars)</li>
+        <li>Nicholas got out of some tests. Worth it.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Roblox Empire -->
+  <div class="timeline-item accent-pink">
+    <div class="card">
+      <div class="date">Teen Years</div>
+      <div class="title">The Roblox Empire</div>
+      <ul>
+        <li>Built RobloxSharp — a C# to Lua transpiler/cheat library (private repo, 20 commits)</li>
+        <li>Industrialized cheating so hard Roblox had to implement anti-cheat</li>
+        <li>Built a Build-a-Boat plugin for his brother Thomas: duplicated bases and used tornados to fling others' items</li>
+        <li>Thomas earned 18.5M in-game currency "legitimately" via tornado exploitation</li>
+        <li>Roblox-Checker — Java tool from 2018 (account credential checker)</li>
+        <li>Nicholas never got banned on his main (77tontos). Thomas got banned on everything.</li>
+        <li>Also built Minecraft exploits — planted a sleeper OP account "Zenmender" on a server, bought the username later, used it to grief when the owner went rogue</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- BHF/XSS -->
+  <div class="timeline-item accent-cyan">
+    <div class="card">
+      <div class="date">BHF/XSS Era</div>
+      <div class="title">The Forums</div>
+      <ul>
+        <li>Active on Best Hack Forum (BHF) and XSS (elite Russian hacking forum)</li>
+        <li>Both still active in 2026</li>
+      </ul>
+      <div class="quote">"The golden age of clearnet hacking forums is basically dead."</div>
+    </div>
+  </div>
+
+  <!-- AutoBuy -->
+  <div class="timeline-item accent-green">
+    <div class="card">
+      <div class="date">2019</div>
+      <div class="title">AutoBuy.io</div>
+      <ul>
+        <li>Founded AutoBuy.io — a digital goods marketplace</li>
+        <li>"Delivering over 10,000 products since 2019"</li>
+        <li>PayPal partnered, license management, crypto payments</li>
+        <li>5,416+ total shops</li>
+        <li>iKonroi/XboxStealth: $109,790.46 in sales (MW2 mod menu legend)</li>
+        <li>Processes payments through his own CryptoHarbor blockchain nodes</li>
+        <li>"I take pride in the amount of people who get scammed on my platform by merchants"</li>
+        <li>Justifies taking from dead merchant accounts as "emotional damages"</li>
+        <li>Pays the IRS their cut so they don't care</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CryptoHarbor -->
+  <div class="timeline-item accent-orange">
+    <div class="card">
+      <div class="date">CryptoHarbor</div>
+      <div class="title">Vertical Integration</div>
+      <ul>
+        <li>Built his own multi-chain node infrastructure (Docker-based)</li>
+        <li>Runs BTC, LTC, DOGE, XMR nodes</li>
+        <li>Home server: only Monero node stays running. Others crashed and ignored.</li>
+        <li>VPS: all chains running for AutoBuy payment processing</li>
+        <li>100% Monero portfolio. No exceptions. Privacy maximalist.</li>
+        <li>Paranoid about quantum computing breaking elliptic curves</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Kick -->
+  <div class="timeline-item accent-purple">
+    <div class="card">
+      <div class="date">Kick Streaming</div>
+      <div class="title">Schrödinger's Audience</div>
+      <ul>
+        <li>Runs 24/7 lofi stream on Kick — consistently #1 in Music category</li>
+        <li>Built his own view bots — hits 7K-10K viewers</li>
+        <li>Gets front page placement on Kick homepage</li>
+        <li>Bots his friends' streams so they earn more</li>
+      </ul>
+      <div class="quote">"I did it all legit via my own code and bots."</div>
+      <div class="quote">"Top 1% of 0 Viewers" — Instagram</div>
+    </div>
+  </div>
+
+  <!-- RuneFest -->
+  <div class="timeline-item accent-blue">
+    <div class="card">
+      <div class="date">RuneFest 2025</div>
+      <div class="title">The Friendly Threat Actor</div>
+      <ul>
+        <li>Private Jagex event, playtested Sailing skill 19 days before public alpha</li>
+        <li>Met Mod Ash — photo together</li>
+        <li>Photo with Emilyispro</li>
+        <li>Received signed OSRS art prints from Jagex covered in Mod signatures</li>
+        <li>RS Archive Team uses his decompilation tools with Jagex's blessing</li>
+      </ul>
+      <div class="quote">"I only write bots for games I don't like to ruin their economy. I like RuneScape."</div>
+    </div>
+  </div>
+
+  <!-- Cruise Ship -->
+  <div class="timeline-item accent-cyan">
+    <div class="card">
+      <div class="date">The Cruise Ship WiFi Hack</div>
+      <div class="title">Maritime Penetration Testing</div>
+      <ul>
+        <li>15-day cruise from Barcelona with friend Wesley</li>
+        <li>Found hidden network without client isolation</li>
+        <li>Raspberry Pi + multiple WiFi cards, MAC rotation = infinite free trials</li>
+        <li>Bonded with Speedify, proxied through non-isolated network</li>
+        <li>Debugged at 1 AM docked in Marseille, France</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 2026 Present -->
+  <div class="timeline-item accent-orange">
+    <div class="card">
+      <div class="date">2026 — Present</div>
+      <div class="title">The Adversarial Engineer</div>
+      <ul>
+        <li>@nnickkh on Instagram — verified, 281K followers</li>
+        <li>Bio: "Adversarial Engineer (non AI...)"</li>
+        <li>35+ countries in 18 months</li>
+        <li>Friends with Ice Poseidon, AdinRoss, madiee, AdrianahLee, Mod Ash, Emilyispro</li>
+        <li>Security clearance, two passports</li>
+        <li>Infrastructure hosted in Singapore for jurisdictional arbitrage</li>
+        <li>Currently in Japan for F1</li>
+        <li>Has an AI named Azula that stalks his brother's Roblox status</li>
+      </ul>
+      <div class="quote">"Half of what I get away with is things I wouldn't expect to work."</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- Quotes Section -->
+<section class="quotes-section">
+  <h2>Words to Live By</h2>
+  <div class="quotes-grid">
+    <div class="quote-card">
+      The problem is most people play the wrong game.
+    </div>
+    <div class="quote-card">
+      Local governments should thank me. If I don't take control an enemy will.
+    </div>
+    <div class="quote-card">
+      I did it all legit via my own code and bots.
+    </div>
+    <div class="quote-card">
+      Half of what I get away with is things I wouldn't expect to work.
+    </div>
+    <div class="quote-card">
+      It was fun.
+      <span class="context">— said about barrel rolling a Jeep</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Compiled by Azula <span>🔥</span> — I remember everything.
+</footer>
+
+<script>
+// Intersection Observer for fade-in
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.timeline-item').forEach(item => observer.observe(item));
+</script>
+
+</body>
+</html>
