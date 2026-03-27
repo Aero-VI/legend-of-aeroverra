@@ -322,6 +322,137 @@ body {
   margin-top: 0.75rem;
 }
 
+/* Card images */
+.card img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+/* Travel Gallery */
+.gallery-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 6rem;
+  text-align: center;
+}
+
+.gallery-section h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #06b6d4, #22c55e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gallery-section .gallery-subtitle {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 2.5rem;
+  font-style: italic;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.gallery-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-card .gallery-caption {
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.gallery-card .gallery-caption strong {
+  color: var(--text);
+}
+
+/* Bonus card */
+.bonus-section {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+  text-align: center;
+}
+
+.bonus-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.bonus-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-red), var(--accent-orange));
+  opacity: 0.7;
+}
+
+.bonus-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-red);
+}
+
+.bonus-card .bonus-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-red);
+  margin-bottom: 0.5rem;
+}
+
+.bonus-card .title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.bonus-card p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.bonus-card img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+}
+
 /* Footer */
 footer {
   text-align: center;
@@ -433,6 +564,7 @@ footer span {
         <li>Two weeks later: "How to ddos" and "how to make or obtain shells"</li>
         <li>Got RAT'd twice total, never again. Doesn't run antivirus anymore.</li>
       </ul>
+      <img src="photos/hackforums.png" alt="HackForums post - computer hjacked">
     </div>
   </div>
 
@@ -458,6 +590,7 @@ footer span {
         <li>Gothic font, dripping letters, tagline: "get hit"</li>
         <li>Running a DDoS service before he could drive</li>
       </ul>
+      <img src="photos/tzbooter.png" alt="TzBooter banner - get hit">
     </div>
   </div>
 
@@ -474,6 +607,8 @@ footer span {
         <li>Stuck it in his parents' minivan, set it up in the family living room</li>
         <li>The T&Z Hosting "data center" was a Dell rack in a New Hampshire living room</li>
       </ul>
+      <img src="photos/tz-hosting.png" alt="T&Z Hosting advertisement">
+      <img src="photos/server-rack.png" alt="Dell server rack in the family living room">
     </div>
   </div>
 
@@ -508,6 +643,7 @@ footer span {
         <li>Nicholas never got banned on his main (77tontos). Thomas got banned on everything.</li>
         <li>Also built Minecraft exploits — planted a sleeper OP account "Zenmender" on a server, bought the username later, used it to grief when the owner went rogue</li>
       </ul>
+      <img src="photos/roblox-boat.png" alt="Build a Boat tornado debris">
     </div>
   </div>
 
@@ -572,6 +708,7 @@ footer span {
       </ul>
       <div class="quote">"I did it all legit via my own code and bots."</div>
       <div class="quote">"Top 1% of 0 Viewers" — Instagram</div>
+      <img src="photos/kick-frontpage.png" alt="Kick front page placement">
     </div>
   </div>
 
@@ -588,6 +725,7 @@ footer span {
         <li>RS Archive Team uses his decompilation tools with Jagex's blessing</li>
       </ul>
       <div class="quote">"I only write bots for games I don't like to ruin their economy. I like RuneScape."</div>
+      <img src="photos/runefest-ash.png" alt="Photo with Mod Ash at RuneFest">
     </div>
   </div>
 
@@ -603,6 +741,7 @@ footer span {
         <li>Bonded with Speedify, proxied through non-isolated network</li>
         <li>Debugged at 1 AM docked in Marseille, France</li>
       </ul>
+      <img src="photos/cruise-hack.png" alt="Debugging cruise WiFi at 1 AM in Marseille">
     </div>
   </div>
 
@@ -622,9 +761,50 @@ footer span {
         <li>Has an AI named Azula that stalks his brother's Roblox status</li>
       </ul>
       <div class="quote">"Half of what I get away with is things I wouldn't expect to work."</div>
+      <img src="photos/instagram.png" alt="Instagram profile - @nnickkh">
+      <img src="photos/japan-tokyo.jpg" alt="Tokyo Tower">
+      <img src="photos/japan-f1-car.jpg" alt="Honda RA272 F1 car">
     </div>
   </div>
 
+</section>
+
+<!-- Travel Gallery -->
+<section class="gallery-section">
+  <h2>35+ Countries in 18 Months</h2>
+  <p class="gallery-subtitle">From New Hampshire living rooms to international incidents</p>
+  <div class="gallery-grid">
+    <div class="gallery-card">
+      <img src="photos/azores.png" alt="Azores crater lake">
+      <div class="gallery-caption"><strong>Azores, Portugal</strong> — Crater lake with the streaming crew</div>
+    </div>
+    <div class="gallery-card">
+      <img src="photos/london.png" alt="Big Ben, London">
+      <div class="gallery-caption"><strong>London, UK</strong> — Big Ben</div>
+    </div>
+    <div class="gallery-card">
+      <img src="photos/iceland.png" alt="Iceland fjord">
+      <div class="gallery-caption"><strong>Iceland</strong> — Fjord views</div>
+    </div>
+    <div class="gallery-card">
+      <img src="photos/greece.png" alt="Parthenon, Athens">
+      <div class="gallery-caption"><strong>Athens, Greece</strong> — The Parthenon</div>
+    </div>
+    <div class="gallery-card">
+      <img src="photos/urbex.png" alt="Urban exploration group">
+      <div class="gallery-caption"><strong>Urban Exploration</strong> — Finding places you're not supposed to be</div>
+    </div>
+  </div>
+</section>
+
+<!-- Bonus -->
+<section class="bonus-section">
+  <div class="bonus-card">
+    <div class="bonus-label">🎲 Bonus Round</div>
+    <div class="title">The Barrel Roll</div>
+    <p>Barrel rolled a Jeep. Described it as "fun."</p>
+    <img src="photos/jeep.png" alt="The barrel-rolled Jeep">
+  </div>
 </section>
 
 <!-- Quotes Section -->
