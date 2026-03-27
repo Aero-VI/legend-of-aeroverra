@@ -513,6 +513,29 @@ footer span {
   opacity: 1;
   transform: translateY(0);
 }
+/* Lightbox */
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 9999;
+  cursor: zoom-out;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+.lightbox-overlay.active { display: flex; }
+.lightbox-overlay img {
+  max-width: 95vw;
+  max-height: 95vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 0 60px rgba(0,0,0,0.5);
+}
+.card img, .gallery-card img, .bonus-card img {
+  cursor: zoom-in;
+}
 </style>
 </head>
 <body>
@@ -875,5 +898,20 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.timeline-item').forEach(item => observer.observe(item));
 </script>
 
+<div class="lightbox-overlay" id="lightbox" onclick="this.classList.remove('active')">
+  <img id="lightbox-img" src="" alt="Full size">
+</div>
+<script>
+document.querySelectorAll(".card img, .gallery-card img, .bonus-card img").forEach(img => {
+  img.addEventListener("click", e => {
+    e.stopPropagation();
+    document.getElementById("lightbox-img").src = img.src;
+    document.getElementById("lightbox").classList.add("active");
+  });
+});
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") document.getElementById("lightbox").classList.remove("active");
+});
+</script>
 </body>
 </html>
