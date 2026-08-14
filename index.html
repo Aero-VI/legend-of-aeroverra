@@ -544,6 +544,24 @@ footer span {
   <h1>THE LEGEND OF AEROVERRA</h1>
   <p class="subtitle">"The problem is most people play the wrong game."</p>
   <div class="scroll-hint">↓</div>
+  <!-- CVE-2026 -->
+  <div class="timeline-item accent-red">
+    <div class="card">
+      <div class="date">August 2026 · Pending Disclosure</div>
+      <div class="title">First Major CVE — Zero-Click RCE</div>
+      <ul>
+        <li>Discovered a critical zero-click Remote Code Execution in ActivTrak employee monitoring agent</li>
+        <li>CVSS 9.6 / Critical — CWE-295 (Improper Certificate Validation) + CWE-494 (Download of Code Without Integrity Check)</li>
+        <li>The agent disables TLS certificate validation on retry BY DESIGN (line 519 of WinHttpClient.cpp)</li>
+        <li>Downloaded update binaries are never signed or verified — any MITM gets NT AUTHORITY\SYSTEM</li>
+        <li>Zero-click, SYSTEM-level code execution in under 3 seconds, no user interaction</li>
+        <li>Status: REPRODUCED. Disclosed to vendor and CERT/CC simultaneously</li>
+        <li>Security researchers spend years hunting for findings like this</li>
+      </ul>
+      <div class="quote">"The kid who DDoS'd Texas.gov at 8 is getting a published CVE."</div>
+    </div>
+  </div>
+
 </section>
 
 <section class="timeline-section">
