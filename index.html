@@ -329,6 +329,148 @@ body {
   margin-top: 1rem;
 }
 
+/* On Tour */
+.tour-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 2rem;
+  text-align: center;
+}
+
+.tour-section h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #a855f7, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.tour-section .tour-subtitle {
+  color: var(--text-muted);
+  font-size: 1rem;
+  font-style: italic;
+  margin-bottom: 0.75rem;
+}
+
+.tour-progress {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+}
+
+.tour-progress b { color: var(--accent-pink); }
+
+.tour-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+  text-align: left;
+}
+
+.tour-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.tour-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink));
+  opacity: 0.75;
+  z-index: 2;
+}
+
+.tour-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+  border-color: #2a2a33;
+}
+
+.tour-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+  cursor: zoom-in;
+}
+
+.tour-stop {
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-pink);
+  font-weight: 700;
+}
+
+.tour-body { padding: 1rem 1.15rem 1.25rem; }
+
+.tour-body .tour-place {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0.35rem 0 0.15rem;
+}
+
+.tour-body .tour-date {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+}
+
+.tour-body p {
+  font-size: 0.88rem;
+  color: #b4b4bb;
+}
+
+.tour-body .tour-quote {
+  margin-top: 0.85rem;
+  padding-left: 0.85rem;
+  border-left: 2px solid var(--accent-purple);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.tour-card.pending {
+  border-style: dashed;
+  border-color: #23232b;
+  background: #0d0d0f;
+  min-height: 260px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1.25rem;
+}
+
+.tour-card.pending::before { opacity: 0.25; }
+
+.tour-card.pending .tour-stop { color: #5a5a66; }
+
+.tour-card.pending .tour-pending-label {
+  margin-top: 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #6a6a77;
+}
+
+.tour-card.pending .tour-pending-note {
+  margin-top: 0.35rem;
+  font-size: 0.8rem;
+  color: #4d4d58;
+}
+
 /* Travel Gallery */
 .gallery-section {
   max-width: 1100px;
@@ -834,6 +976,7 @@ footer span {
         <li>Infrastructure hosted in Singapore for jurisdictional arbitrage</li>
         <li>40+ countries across 5 continents</li>
         <li>Has an AI named Azula that stalks his brother's Roblox status</li>
+        <li>October 2026: four separate friend groups in one week, none of whom know each other (see On Tour below)</li>
       </ul>
       <div class="quote">"Half of what I get away with is things I wouldn't expect to work."</div>
       <img src="photos/instagram.png" alt="Instagram profile - @nnickkh">
@@ -842,6 +985,46 @@ footer span {
     </div>
   </div>
 
+</section>
+
+<!-- On Tour -->
+<section class="tour-section">
+  <h2>On Tour: October 2026</h2>
+  <p class="tour-subtitle">One week. Four different friend groups. No overlap between any of them.</p>
+  <p class="tour-progress">Stop <b>1</b> of 4 logged · 3 still incoming</p>
+  <div class="tour-grid">
+
+    <div class="tour-card">
+      <img src="photos/tour-01-runefest-emily.jpg?v=1" alt="RuneFest 2026, NEC Birmingham: matching dragon shirts with Emilyispro">
+      <div class="tour-body">
+        <div class="tour-stop">Stop 01 · The RuneScape Crowd</div>
+        <div class="tour-place">RuneFest 2026, NEC Birmingham (Hall 5)</div>
+        <div class="tour-date">October 3-4, 2026</div>
+        <p>Second RuneFest, Gold ticket. Got there the hard way: Myrtle Beach → Atlanta → Amsterdam → Birmingham, with KLM cancelling the Birmingham leg mid-transit and rebooking him to Manchester. He refused Manchester, found a later Birmingham flight in the app himself, and landed at 22:10 the night before the show.</p>
+        <p style="margin-top:0.6rem;">Ran into Emilyispro again, the same person from RuneFest 2025, both of them in the matching dragon shirts, hers with a CREATOR badge on it. They spent the day ranting to each other about how neither of them can handle the social awkwardness of the event. The anxiety was the icebreaker.</p>
+        <div class="tour-quote">"I can't be social in the one crowd I used to be the most social with."</div>
+      </div>
+    </div>
+
+    <div class="tour-card pending">
+      <div class="tour-stop">Stop 02</div>
+      <div class="tour-pending-label">Awaiting transmission</div>
+      <div class="tour-pending-note">Photo not taken yet</div>
+    </div>
+
+    <div class="tour-card pending">
+      <div class="tour-stop">Stop 03</div>
+      <div class="tour-pending-label">Awaiting transmission</div>
+      <div class="tour-pending-note">Photo not taken yet</div>
+    </div>
+
+    <div class="tour-card pending">
+      <div class="tour-stop">Stop 04</div>
+      <div class="tour-pending-label">Awaiting transmission</div>
+      <div class="tour-pending-note">Photo not taken yet</div>
+    </div>
+
+  </div>
 </section>
 
 <!-- Travel Gallery -->
@@ -962,7 +1145,7 @@ document.querySelectorAll('.timeline-item').forEach(item => observer.observe(ite
   <img id="lightbox-img" src="" alt="Full size">
 </div>
 <script>
-document.querySelectorAll(".card img, .gallery-card img, .bonus-card img").forEach(img => {
+document.querySelectorAll(".card img, .gallery-card img, .tour-card img, .bonus-card img").forEach(img => {
   img.addEventListener("click", e => {
     e.stopPropagation();
     document.getElementById("lightbox-img").src = img.src;
